@@ -1,0 +1,13 @@
+# Article 36 Legal Weapons Review Doctrinal Matrix
+
+This matrix operationalizes the customary rules of International Humanitarian Law codified in Protocol Additional I of 1977 and the Geneva Conventions of 1949 as applied to algorithmic, automated, and autonomous weapons systems.
+
+| IHL Rule / Treaty Citation | Legal Test & Algorithmic Scrutiny Question | Acceptable Standard | Failure / Prohibited Threshold |
+| :--- | :--- | :--- | :--- |
+| **AP I Art. 35(1)–(2)**<br>Methods and Means: Superfluous Injury | Does the system cause superfluous injury, unnecessary suffering, or violate the Martens Clause? | Kinetic / non-kinetic effects calibrated strictly to military objectives. | Indiscriminate suffering, bio/chemical payloads, weapons causing untreatable trauma. |
+| **AP I Art. 36**<br>New Weapons Legal Review | Has the weapon been reviewed at study, development, acquisition, and significant software re-training? | Formal interdisciplinary review dossier with live-fire and simulation testing. | Fielding or operational deployment without legal review. |
+| **AP I Art. 48 & 51(4)**<br>Principle of Distinction | Can the system verify military objectives and distinguish them from civilians and persons *hors de combat*? | High-confidence sensor fusion, verifiable target characteristics, robust adversarial robustness. | Area-bombardment algorithms, unconstrained geographic drift, systems unable to recognize surrender. |
+| **AP I Art. 51(5)(b)**<br>Rule of Proportionality | Does the commander have the capacity to foresee and evaluate expected collateral damage? | Quantitative collateral damage estimation (CDE) with human contextual override. | Automated strike execution without human proportionality calculation. |
+| **AP I Art. 57(2)(b)**<br>Precautions in Attack: Strike Cancellation | Can the attack be cancelled or suspended if circumstances change? | Continuous real-time telemetry with reliable positive abort / deactivation kill-switch. | "Fire-and-forget" autonomous operation with no abort capability in dynamic civilian areas. |
+| **CCW GGE Principle (b)**<br>Human Accountability | Is human legal responsibility retained across the lifecycle? | Clear chain of command; named human commanders legally accountable for target selection. | Delegating legal accountability to machine learning models or algorithms. |
+| **CCW GGE Principle (c)**<br>Human-Machine Interaction | Does meaningful human control exist over critical functions (selection and engagement)? | Human operator understands system parameters, environment constraints, and has intervention authority. | Unbounded autonomous target engagement beyond human comprehension. |

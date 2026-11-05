@@ -1,0 +1,55 @@
+name: "Validate Skills & Marketplace Manifest"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Schema & Structure Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate JSON Schemas & Skill File Integrity
+        run: |
+          python - << 'EOF'
+          import json
+          from pathlib import Path
+
+          # Validate marketplace.json
+          manifest_path = Path("marketplace.json")
+          assert manifest_path.exists(), "marketplace.json missing!"
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+          assert manifest["id"] == "lex-machina-skills"
+          assert len(manifest["skills"]) == 4, f"Expected 4 skills, found {len(manifest['skills'])}"
+
+          for s in manifest["skills"]:
+              entrypoint = Path(s["entrypoint"])
+              assert entrypoint.exists(), f"Skill entrypoint missing: {entrypoint}"
+              print(f"Verified skill: {s['name']} -> {entrypoint}")
+
+          # Validate templates
+          memo_template = Path("templates/legal_memorandum_template.md")
+          assert memo_template.exists(), "Legal memo template missing!"
+
+          exec_template = Path("templates/executive_briefing_template.md")
+          assert exec_template.exists(), "Executive briefing template missing!"
+
+          print("\nAll skill manifests, schemas, and templates successfully verified!")
+          EOF

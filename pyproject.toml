@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lex-machina-skills"
+version = "1.0.0"
+description = "Institutional-grade AI regulation, travaux préparatoires, and international law skills for AI agents and FastMCP"
+readme = "README.md"
+authors = [
+  { name = "Avi Perera / Lex Machina Consortium", email = "avi@lex-machina.org" }
+]
+license = { text = "CC BY-NC 4.0 / Commercial Enterprise" }
+keywords = [
+  "ai-act", "legal-tech", "mcp", "fastmcp", "cursor", "claude-code",
+  "statutory-interpretation", "travaux-preparatoires", "geneva-conventions",
+  "nist-ai-rmf", "compliance"
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Legal Industry",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Office/Business :: Financial :: Point-Of-Sale",
+  "Programming Language :: Python :: 3"
+]
+dependencies = [
+  "httpx>=0.25.0",
+  "mcp>=0.1.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/a-vip/lex-machina-skills"
+"Corpus Engine" = "https://github.com/a-vip/lex-machina"
+"Marketplace" = "https://agensi.io/skills/lex-machina"

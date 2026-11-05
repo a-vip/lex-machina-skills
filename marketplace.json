@@ -1,0 +1,92 @@
+{
+  "$schema": "https://agensi.io/schemas/skill-manifest-v1.json",
+  "id": "lex-machina-skills",
+  "name": "Lex Machina Pro: Elite Legal & Regulatory Intelligence Suite",
+  "version": "1.0.0",
+  "publisher": {
+    "name": "Avi Perera / Lex Machina Consortium",
+    "url": "https://github.com/a-vip/lex-machina-skills",
+    "contact": "avi@lex-machina.org"
+  },
+  "headline": "Institutional-grade AI regulation, travaux préparatoires redlines, and international law reasoning for Claude Code, Cursor, and legal AI agents.",
+  "description": "Engineered for AmLaw 100 / Magic Circle regulatory practices, multilateral treaty delegations, and corporate general counsels. Provides surgical statutory reasoning, legislative intent reconstruction (travaux préparatoires), redline diffing across negotiating drafts, and automated compliance auditing across the EU AI Act, GDPR, CoE CETS 225, UN CCW LAWS, and NIST AI RMF.",
+  "categories": [
+    "Legal & Compliance",
+    "Regulatory Intelligence",
+    "AI Governance",
+    "Statutory Interpretation",
+    "Defense & IHL"
+  ],
+  "keywords": [
+    "eu-ai-act",
+    "statutory-interpretation",
+    "travaux-preparatoires",
+    "trilogue-blame",
+    "gdpr-compliance",
+    "coe-cets-225",
+    "un-laws",
+    "article-36-weapons-review",
+    "nist-ai-rmf",
+    "mcp-server",
+    "legal-memorandum"
+  ],
+  "license": "Commercial / Dual Academic (CC BY-NC 4.0 & Enterprise)",
+  "pricing": {
+    "model": "freemium_and_enterprise",
+    "community_tier": {
+      "price": 0,
+      "description": "Standard prompt workflows paired with the open-access remote lex-machina MCP server."
+    },
+    "enterprise_tier": {
+      "price_usd_monthly": 199,
+      "description": "Commercial license, verified travaux préparatoires citations, firm-tailored FIRAC memo templates, and SLA support."
+    }
+  },
+  "compatibility": {
+    "claude_code": ">=1.0.0",
+    "cursor": ">=0.40.0",
+    "windsurf": ">=1.0.0",
+    "chatgpt_desktop": ">=1.0.0",
+    "fastmcp": ">=0.4.0"
+  },
+  "mcp_server": {
+    "name": "lex-machina",
+    "type": "fastmcp",
+    "remote_git_repo": "https://github.com/a-vip/lex-machina",
+    "description": "Stateless FastMCP server that queries GitHub's REST/Raw APIs and remote SQLite FTS5 index on refs/heads/corpus.",
+    "tools_used": [
+      "list_instruments",
+      "get_provision",
+      "diff_provisions",
+      "blame_provision",
+      "search_corpus",
+      "get_citation_graph"
+    ]
+  },
+  "skills": [
+    {
+      "id": "eu-ai-act-auditor",
+      "name": "EU AI Act Compliance & Risk Classification Sentinel",
+      "entrypoint": "skills/eu-ai-act-auditor/SKILL.md",
+      "description": "Systematic audit of AI systems against Regulation (EU) 2024/1689: Article 5 prohibited practices, Article 6 and Annex III high-risk classification, Fundamental Rights Impact Assessments (Article 27), transparency duties (Article 50), and GPAI systemic risk rules (Articles 51-55)."
+    },
+    {
+      "id": "legislative-intent-detective",
+      "name": "Travaux Préparatoires & Legislative Intent Detective",
+      "entrypoint": "skills/legislative-intent-detective/SKILL.md",
+      "description": "CJEU teleological and contextual statutory interpretation engine. Traces provisions across Commission proposals, Council general approaches, Parliament mandates, trilogue agreements, and Official Journal texts with institutional git-blame attribution."
+    },
+    {
+      "id": "ihl-weapons-review-sentinel",
+      "name": "IHL & Military AI Legal Review Sentinel (Article 36 AP I)",
+      "entrypoint": "skills/ihl-weapons-review-sentinel/SKILL.md",
+      "description": "Operationalizes Article 36 of Additional Protocol I to the 1949 Geneva Conventions and UN CCW GGE Guiding Principles on Lethal Autonomous Weapons Systems (LAWS)."
+    },
+    {
+      "id": "transatlantic-regulatory-crosswalk",
+      "name": "Transatlantic AI Regulatory Crosswalk (EU AI Act vs. NIST vs. CAC)",
+      "entrypoint": "skills/transatlantic-regulatory-crosswalk/SKILL.md",
+      "description": "Comparative regulatory harmonizer mapping compliance requirements across the EU AI Act, US NIST AI RMF 1.0 (NIST AI 100-1) / GenAI Profile (NIST AI 600-1), China CAC AI Trilogy, and Council of Europe CETS 225."
+    }
+  ]
+}

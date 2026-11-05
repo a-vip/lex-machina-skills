@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "lex-machina": {
+      "command": "python",
+      "args": [
+        "-m",
+        "mcp_server.server"
+      ],
+      "env": {
+        "LEX_MACHINA_REPO": "a-vip/lex-machina",
+        "LEX_MACHINA_BRANCH": "corpus",
+        "PYTHONUNBUFFERED": "1"
+      }
+    }
+  }
+}

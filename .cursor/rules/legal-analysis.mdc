@@ -1,0 +1,25 @@
+---
+description: Comprehensive legal reasoning and statutory interpretation rules for Lex Machina
+globs: **/*.md, **/*.txt, **/*.json
+alwaysApply: true
+---
+
+# Legal Analysis & Statutory Interpretation Standard
+
+## 1. Doctrinal Method
+- Follow CJEU teleological interpretation: analyze the text in its grammatical meaning, legislative context, and overarching regulatory objective.
+- For international treaties, adhere strictly to Articles 31 and 32 of the Vienna Convention on the Law of Treaties (VCLT):
+  - General rule of interpretation (good faith, ordinary meaning in context, object and purpose).
+  - Supplementary means of interpretation (travaux préparatoires and circumstances of conclusion).
+
+## 2. EU AI Act Tiered Scrutiny Protocol
+- **Tier 0 (Scope & Exclusions)**: Article 2 (National security, exclusive military use, pure scientific R&D, personal non-professional).
+- **Tier 1 (Prohibitions - Unacceptable Risk)**: Article 5 (Cognitive behavioral manipulation, social scoring, biometric categorization for sensitive traits, predictive policing, emotion recognition in workplace/education, untargeted facial scraping, real-time RBI in public spaces).
+- **Tier 2 (High-Risk Systems)**: Article 6(1) (Annex I harmonized products) & Article 6(2) (Annex III critical domains). Check Article 6(3) accessory derogation and mandatory profiling override.
+- **Tier 3 (General-Purpose AI Models - GPAI)**: Article 51 (Systemic risk compute threshold $10^{25}$ FLOPs), Article 53 (Copyright policy, training summary), Article 55 (Systemic risk adversarial red-teaming, cybersecurity, incident reporting).
+- **Tier 4 (Specific Transparency Risks)**: Article 50 (Direct interaction disclosure, synthetic audio/image/video watermarking, deep fake disclosure).
+
+## 3. Defense & IHL Review Protocol
+- Additional Protocol I Article 36 (mandatory legal review of new weapons, means, or methods of warfare).
+- Core customary principles: Distinction (Art. 48/51), Proportionality (Art. 51(5)(b)), Precautions in attack (Art. 57), Prohibition of superfluous injury or unnecessary suffering (Art. 35(2)).
+- UN CCW GGE 11 Guiding Principles on Lethal Autonomous Weapons Systems (LAWS).
