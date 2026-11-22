@@ -1,25 +1,20 @@
 ---
-description: Comprehensive legal reasoning and statutory interpretation rules for Lex Machina
+description: Institutional legal reasoning, bitemporal enforceability, and ABA Formal Opinion 512 verification rules for Lex Machina v2.0
 globs: **/*.md, **/*.txt, **/*.json
 alwaysApply: true
 ---
 
-# Legal Analysis & Statutory Interpretation Standard
+# Lex Machina v2.0 Doctrinal & Verification Rules
 
-## 1. Doctrinal Method
-- Follow CJEU teleological interpretation: analyze the text in its grammatical meaning, legislative context, and overarching regulatory objective.
-- For international treaties, adhere strictly to Articles 31 and 32 of the Vienna Convention on the Law of Treaties (VCLT):
-  - General rule of interpretation (good faith, ordinary meaning in context, object and purpose).
-  - Supplementary means of interpretation (travaux préparatoires and circumstances of conclusion).
+## 1. Bitemporal Legal Accuracy (2026 Current)
+- Always call `check_applicability(instrument_path, provision, as_of_date)` before stating a provision is enforceable.
+- Respect EU Digital Omnibus `Regulation (EU) 2026/1744` staggered deadlines (Feb 2, 2025 Art. 5; Aug 2, 2025 GPAI; Aug 2, 2026 Art. 50; Dec 2, 2026 NCII/CSAM & legacy Art. 50(2); Dec 2, 2027 Annex III; Aug 2, 2028 Annex I).
+- Never cite US Executive Order 14110 as active law (revoked Jan 20, 2025).
+- Distinguish EU CRA Art. 14 vulnerability reporting (live Sept 11, 2026) from full CRA product compliance (Dec 11, 2027), and DORA *lex specialis* over NIS2 for financial entities.
 
-## 2. EU AI Act Tiered Scrutiny Protocol
-- **Tier 0 (Scope & Exclusions)**: Article 2 (National security, exclusive military use, pure scientific R&D, personal non-professional).
-- **Tier 1 (Prohibitions - Unacceptable Risk)**: Article 5 (Cognitive behavioral manipulation, social scoring, biometric categorization for sensitive traits, predictive policing, emotion recognition in workplace/education, untargeted facial scraping, real-time RBI in public spaces).
-- **Tier 2 (High-Risk Systems)**: Article 6(1) (Annex I harmonized products) & Article 6(2) (Annex III critical domains). Check Article 6(3) accessory derogation and mandatory profiling override.
-- **Tier 3 (General-Purpose AI Models - GPAI)**: Article 51 (Systemic risk compute threshold $10^{25}$ FLOPs), Article 53 (Copyright policy, training summary), Article 55 (Systemic risk adversarial red-teaming, cybersecurity, incident reporting).
-- **Tier 4 (Specific Transparency Risks)**: Article 50 (Direct interaction disclosure, synthetic audio/image/video watermarking, deep fake disclosure).
+## 2. Travaux Preparatoires & Phrase-Level Blame
+- Resolve renumbered articles via `concordance.json` (`diff_provisions` / `blame_provision`).
+- Ground CJEU teleological reasoning in linked Recitals (`get_citation_graph`).
 
-## 3. Defense & IHL Review Protocol
-- Additional Protocol I Article 36 (mandatory legal review of new weapons, means, or methods of warfare).
-- Core customary principles: Distinction (Art. 48/51), Proportionality (Art. 51(5)(b)), Precautions in attack (Art. 57), Prohibition of superfluous injury or unnecessary suffering (Art. 35(2)).
-- UN CCW GGE 11 Guiding Principles on Lethal Autonomous Weapons Systems (LAWS).
+## 3. Mandatory Pre-Delivery Verification (ABA Formal Opinion 512)
+- Run `verify_citations` on every draft legal memorandum and attach the SHA-256 provenance digest and Human-in-the-Loop attorney review notice.

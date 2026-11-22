@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "lex-machina": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/a-vip/lex-machina",
+        "lex-machina-mcp"
+      ],
+      "env": {
+        "LEX_MACHINA_REPO": "a-vip/lex-machina",
+        "LEX_MACHINA_BRANCH": "corpus"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/hesreallyhim/claude-code-json-schema/main/schemas/plugin.schema.json",
+  "name": "lex-machina",
+  "version": "2.0.0",
+  "description": "Institutional-grade AI, Cyber & International Law reasoning suite (5 skills + ABA Opinion 512 citation-verification PostToolUse hook + Remote Streamable HTTP & stdio MCP config).",
+  "author": {
+    "name": "Avi Perera / Lex Machina Consortium",
+    "email": "avi@lex-machina.org"
+  },
+  "homepage": "https://github.com/a-vip/lex-machina-skills",
+  "repository": "https://github.com/a-vip/lex-machina-skills",
+  "license": "CC-BY-NC-4.0",
+  "keywords": [
+    "eu-ai-act",
+    "digital-omnibus-2026",
+    "cyber-resilience-act",
+    "nis2",
+    "dora",
+    "travaux-preparatoires",
+    "article-36-weapons-review",
+    "citation-verification",
+    "aba-opinion-512",
+    "legal-tech"
+  ]
+}

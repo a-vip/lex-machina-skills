@@ -1,81 +1,63 @@
-# FORMAL LEGAL OPINION & COMPLIANCE MEMORANDUM
+# FORMAL LEGAL OPINION & BITEMPORAL COMPLIANCE MEMORANDUM
 
-**CONFIDENTIAL ATTORNEY-CLIENT PRIVILEGED / REGULATORY ADVISORY**
+**PRIVILEGED & CONFIDENTIAL — PREPARED FOR LICENSED ATTORNEY REVIEW (ABA FORMAL OPINION 512)**
 
 ---
 
 | METADATA | DETAILS |
 | :--- | :--- |
-| **TO:** | General Counsel / Chief Risk Officer / Special Committee on AI Governance |
-| **FROM:** | Senior Regulatory & International Law Practice Group |
-| **DATE:** | [YYYY-MM-DD] |
-| **SUBJECT:** | Regulatory Classification, Travaux Préparatoires Intent, and Compliance Risk Assessment for [System / AI Model Name] |
-| **LEGAL REGIME(S):** | Regulation (EU) 2024/1689 (EU AI Act) / CETS 225 / Geneva Conventions AP I / NIST AI RMF |
-| **RISK TIER:** | **PROHIBITED** / **HIGH-RISK** / **GPAI SYSTEMIC RISK** / **TRANSPARENCY ONLY** / **EXEMPT** |
+| **TO:** | General Counsel / Chief Risk Officer / Board AI & Cyber Risk Committee |
+| **FROM:** | Regulatory, Cyber & Public International Law Practice Group |
+| **AS-OF LEGAL DATE:** | `[YYYY-MM-DD]` |
+| **SYSTEM / TRANSACTION:** | `[AI System / Model / Digital Product Name]` |
+| **PLACED ON MARKET DATE:** | `[YYYY-MM-DD]` *(determines legacy transition eligibility)* |
+| **LEGAL REGIME(S):** | EU AI Act (Reg. 2024/1689 as amended by Reg. 2026/1744) / GDPR / CRA / NIS2 / DORA / US State & NIST / China CAC / CETS 225 / IHL AP I |
+| **RISK CLASSIFICATION:** | `PROHIBITED` / `HIGH-RISK` / `GPAI SYSTEMIC RISK` / `TRANSPARENCY` / `CYBER REGULATED` / `EXEMPT` |
 
 ---
 
-## 1. EXECUTIVE SUMMARY & ACTIONABLE ADVICE
-*(Concise, C-suite actionable synthesis: 2-3 paragraphs detailing the exact statutory finding, legal exposure, financial penalty exposure under EU AI Act Art. 99 / GDPR Art. 83, and immediate governance directives).*
+## 1. EXECUTIVE SUMMARY & IMMEDIATE DIRECTIVES
+*(Concise partner-level bottom line: exact statutory classification, currently enforceable duties vs. deferred 2027–2028 milestones, maximum fine exposure, and immediate risk-mitigation directives).*
 
 ---
 
 ## 2. SYSTEM ARCHITECTURE & FACTUAL RECITATION
-- **Technical Description**: Model family, parameters, training compute (FLOPs), multimodal capabilities.
-- **Intended Purpose & Operational Context**: Stated commercial use cases, user interface, deployment geography.
-- **Data Governance & Processing Pipeline**: Biometric ingestion, scraped web content, copyrighted materials, real-time telemetry.
-- **Autonomy & Human Oversight**: Degree of autonomous execution, human-in-the-loop vs. human-on-the-loop controls.
+- **Technical Architecture**: Model class, training compute (FLOPs vs. `10^25` systemic risk threshold), modalities, digital-element supply chain (SBOM / open-source components).
+- **Operational Context & Geography**: Territorial nexus (EU, US States, China, global), user population, human oversight architecture.
 
 ---
 
-## 3. REGULATORY JURISDICTION & SCOPE THRESHOLD (FIRAC)
-### 3.1 Territorial Scope (EU AI Act Art. 2 / GDPR Art. 3)
-- Analysis of deployer/provider location and whether outputs affect natural persons within the Union.
-
-### 3.2 Material Scope & Sectoral Derogations
-- Scrutiny under Article 2(3) (national defense/military), Article 2(6) (scientific R&D), or open-source software exceptions.
-
----
-
-## 4. SUBSTANTIVE STATUTORY AUDIT & TRAVAUX PRÉPARATOIRES INQUIRY
-### 4.1 Article 5 Prohibited Practices Scrutiny
-| Clause | Statutory Prohibition | Analysis of Target System | Risk Rating |
-| :--- | :--- | :--- | :--- |
-| **Art. 5(1)(a)** | Subliminal / Manipulative distortion of behavior | [Detailed analysis] | Low / Med / High / Violation |
-| **Art. 5(1)(b)** | Exploitation of vulnerabilities (age, disability, socio-economic) | [Detailed analysis] | Low / Med / High / Violation |
-| **Art. 5(1)(c)** | Social scoring leading to unjustified detrimental treatment | [Detailed analysis] | Low / Med / High / Violation |
-| **Art. 5(1)(d)** | Individual criminal risk assessment based solely on profiling | [Detailed analysis] | Low / Med / High / Violation |
-| **Art. 5(1)(e)** | Untargeted scraping of facial images from web or CCTV | [Detailed analysis] | Low / Med / High / Violation |
-| **Art. 5(1)(f)** | Emotion recognition in workplace and educational institutions | [Detailed analysis] | Low / Med / High / Violation |
-| **Art. 5(1)(g)** | Biometric categorization deducing sensitive attributes | [Detailed analysis] | Low / Med / High / Violation |
-| **Art. 5(1)(h)** | Real-time remote biometric identification in public spaces | [Detailed analysis] | Low / Med / High / Violation |
-
-### 4.2 Legislative History & Institutional Intent (*Travaux Préparatoires*)
-- **Evolution of Key Clauses**: Tracing from Commission Proposal (COM(2021) 206) $\rightarrow$ Council General Approach (14954/22) $\rightarrow$ Parliament Negotiating Mandate (P9_TA(2023)0236) $\rightarrow$ Trilogue Compromise (ST 5662/24).
-- **Institutional Blame Attribution**: Identifying the co-legislator responsible for narrowing or expanding the provision.
-- **Teleological Purpose**: Citation of corresponding Recitals to interpret legislative intent under CJEU canons.
+## 3. BITEMPORAL ENFORCEABILITY MATRIX (`check_applicability`)
+| Instrument | Provision | Published Date | Effective Application Date | Status on `[YYYY-MM-DD]` | Amending Act / Legacy Grace Period |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `eu/ai-act` | Art. 5 (Initial 8 Bans) | 2024-07-12 | 2025-02-02 | **ENFORCEABLE** | NCII/CSAM expansion live `2026-12-02` (Reg. 2026/1744) |
+| `eu/ai-act` | Art. 50 (Transparency) | 2024-07-12 | 2026-08-02 | **ENFORCEABLE / LEGACY GRACE** | Legacy GenAI cutoff `2026-12-02` (Reg. 2026/1744) |
+| `eu/ai-act` | Art. 6 / Annex III / Art. 27 | 2024-07-12 | **2027-12-02** | **DEFERRED (NOT YET APPLICABLE)** | Postponed from 2026-08-02 by Reg. (EU) 2026/1744 |
+| `eu/cyber/cra` | Art. 14 (ENISA Reporting) | 2024-11-20 | 2026-09-11 | **ENFORCEABLE** | Full CRA product compliance `2027-12-11` |
+| `national/us/state-ai-laws` | Texas TRAIGA (HB 149) | 2025-06-22 | 2026-01-01 | **ENFORCEABLE** | EO 14110 **REVOKED** `2025-01-20` |
 
 ---
 
-## 5. HIGH-RISK & GPAI CLASSIFICATION (ARTICLES 6, 27, 51-55)
-- **High-Risk Classification (Article 6 & Annex III)**: Step-by-step test, accessory derogation analysis under Article 6(3), and mandatory profiling bar.
-- **Fundamental Rights Impact Assessment (FRIA - Article 27)**: Mandatory deployer assessment criteria.
-- **General-Purpose AI (GPAI) Model Obligations (Articles 51–55)**: Compute evaluation against the $10^{25}$ FLOPs systemic risk threshold, copyright compliance summary (Art. 53(1)(d)), and adversarial red-teaming (Art. 55).
+## 4. SUBSTANTIVE FIRAC STATUTORY ANALYSIS & TRAVAUX PREPARATOIRES
+### 4.1 Statutory Gate Analysis (Exact Verbatim Text Grounded via `get_provision`)
+*(Detail scope, prohibitions, high-risk derogations + Art. 6(3) profiling override, GPAI, cyber interlocks, or IHL Art. 36 criteria).*
+
+### 4.2 Legislative History & Phrase-Level Institutional Attribution (`diff_provisions` & `blame_provision`)
+| Norm / Clause | Commission Proposal | Council / Parliament Mandate | Final / 2026 Amended Text | Primary Institutional Author (Token Share %) |
+| :--- | :--- | :--- | :--- | :--- |
+| `[Norm]` | `[Symbol & text]` | `[Symbol & text]` | `[Symbol & text]` | `[Institution <email> (XX%)]` |
 
 ---
 
-## 6. TRANSATLANTIC & MULTILATERAL REGULATORY CROSSWALK
-- Comparative alignment against **US NIST AI RMF 1.0 / NIST AI 600-1 (GenAI Profile)** and **Council of Europe Framework Convention (CETS No. 225)**.
+## 5. REMEDIATION ROADMAP & GOVERNANCE CONTROLS
+1. **Immediate (0–30 Days — Currently Enforceable Duties)**: Article 5 prohibitions, Article 50 disclosures, CRA Art. 14 ENISA reporting pipeline, China Sept 2025 labeling (`GB 45438-2025`), Texas TRAIGA screening.
+2. **Medium-Term (30–180 Days — Readiness for Dec 2026 / Dec 2027 / Aug 2028)**: Annex IV technical dossier, Article 9 RMS mapped to NIST AI RMF, Article 27 FRIA, SBOM & CE conformity.
 
 ---
 
-## 7. REMEDIATION ROADMAP & STRATEGIC RECOMMENDATIONS
-1. **Short-Term Technical Mitigations (0–30 Days)**: Specific algorithmic changes, guardrails, watermarking.
-2. **Contractual & Governance Measures (30–90 Days)**: Technical documentation (Annex XI), deployer instructions for use, logging retention.
-3. **Regulatory Engagement Strategy**: AI Office notifications, EU Database registrations, sandbox participation.
-
----
-
-**RESPECTFULLY SUBMITTED,**
-
-*Lex Machina Regulatory & International Law Practice Group*
+## 6. ABA FORMAL OPINION 512 VERIFICATION AUDIT CERTIFICATE & SHA-256 PROVENANCE
+- **Automated Citation Verifier (`verify_citations`) Verdict**: `[PASS / REQUIRES_ATTORNEY_CORRECTION]`
+- **Citations Checked / Failed**: `[N / 0]`
+- **Primary-Source SHA-256 Digests**:
+  - `eu/ai-act` (`32024R1689`): `sha256:[...]` | `provenance_mode`: `[full_primary_xhtml_akn]` | ELI: `http://data.europa.eu/eli/reg/2024/1689/oj`
+- **Mandatory Attorney-in-the-Loop Notice (ABA Model Rules 1.1, 1.6, 3.3, 5.1)**: *This memorandum was generated with deterministic statutory retrieval and automated citation verification under Zero Data Retention (ZDR). A licensed attorney must review all legal conclusions prior to client delivery or tribunal filing.*

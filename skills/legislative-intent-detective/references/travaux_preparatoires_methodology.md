@@ -38,3 +38,4 @@ When building a legal memorandum:
 - **Compare Column 1 vs. Column 3**: Identifies Parliament's policy priorities (e.g., foundation models, environmental reporting, emotion recognition bans).
 - **Compare Column 2 vs. Column 3**: Identifies the primary fault lines between Member State security interests and fundamental rights safeguards.
 - **Inspect Column 4**: The sealed compromise text containing the precise statutory definitions and derogation conditions.
+

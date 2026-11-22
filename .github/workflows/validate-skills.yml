@@ -1,4 +1,4 @@
-name: "Validate Skills & Marketplace Manifest"
+name: "Validate Skills, Claude Plugin, Hooks & Citation Verifier"
 
 on:
   push:
@@ -14,42 +14,69 @@ permissions:
 
 jobs:
   validate:
-    name: Schema & Structure Validation
+    name: Validate agentskills.io Spec, Claude Plugin & Verifier Hook
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3.12
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Validate JSON Schemas & Skill File Integrity
+      - name: Validate JSON manifests, agentskills.io frontmatter & deterministic verifier
         run: |
           python - << 'EOF'
           import json
+          import re
+          import subprocess
+          import sys
           from pathlib import Path
 
-          # Validate marketplace.json
-          manifest_path = Path("marketplace.json")
-          assert manifest_path.exists(), "marketplace.json missing!"
-          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-          assert manifest["id"] == "lex-machina-skills"
-          assert len(manifest["skills"]) == 4, f"Expected 4 skills, found {len(manifest['skills'])}"
+          # 1. Validate all JSON files
+          for jf in [
+              "marketplace.json",
+              ".claude-plugin/plugin.json",
+              ".claude-plugin/marketplace.json",
+              ".mcp.json",
+              "hooks/hooks.json",
+              "claude/claude_desktop_config.json",
+          ]:
+              p = Path(jf)
+              assert p.exists(), f"Missing required manifest: {jf}"
+              json.loads(p.read_text(encoding="utf-8"))
+              print(f"OK JSON: {jf}")
 
+          # 2. Validate all 5 skills against agentskills.io frontmatter spec
+          manifest = json.loads(Path("marketplace.json").read_text(encoding="utf-8"))
+          assert len(manifest["skills"]) == 5, f"Expected 5 skills, got {len(manifest['skills'])}"
           for s in manifest["skills"]:
-              entrypoint = Path(s["entrypoint"])
-              assert entrypoint.exists(), f"Skill entrypoint missing: {entrypoint}"
-              print(f"Verified skill: {s['name']} -> {entrypoint}")
+              ep = Path(s["entrypoint"])
+              assert ep.exists(), f"Missing skill entrypoint: {ep}"
+              content = ep.read_text(encoding="utf-8")
+              assert content.startswith("---\n"), f"{ep} missing YAML frontmatter"
+              fm = content.split("---\n", 2)[1]
+              assert re.search(r"^name:\s+[a-z0-9-]+$", fm, re.M), f"{ep} invalid agentskills.io name"
+              assert re.search(r"^description:\s+.{40,}", fm, re.M), f"{ep} missing rich description"
+              assert "Do NOT use" in fm, f"{ep} missing negative trigger boundary"
+              assert len(content.splitlines()) < 500, f"{ep} exceeds 500-line progressive disclosure budget"
+              print(f"OK Skill (agentskills.io): {s['id']} ({len(content.splitlines())} lines)")
 
-          # Validate templates
-          memo_template = Path("templates/legal_memorandum_template.md")
-          assert memo_template.exists(), "Legal memo template missing!"
+          # 3. Smoke-test deterministic ABA Opinion 512 citation verifier script
+          good = subprocess.run(
+              [sys.executable, "scripts/verify_memo_citations.py"],
+              input="Under EU AI Act Article 5 and CRA Article 14, obligations apply. EO 14110 was revoked on 2025-01-20.",
+              text=True, capture_output=True,
+          )
+          assert good.returncode == 0, f"Valid memo failed verifier: {good.stdout} {good.stderr}"
 
-          exec_template = Path("templates/executive_briefing_template.md")
-          assert exec_template.exists(), "Executive briefing template missing!"
-
-          print("\nAll skill manifests, schemas, and templates successfully verified!")
+          bad = subprocess.run(
+              [sys.executable, "scripts/verify_memo_citations.py"],
+              input="Under EU AI Act Article 199 and active Executive Order 14110, fines apply.",
+              text=True, capture_output=True,
+          )
+          assert bad.returncode == 1, f"Fabricated memo should fail verifier! stdout={bad.stdout}"
+          print("OK Deterministic verifier passed positive & adversarial checks!")
           EOF

@@ -1,51 +1,38 @@
-# EXECUTIVE REGULATORY BRIEFING: STATUTORY IMPACT & EXPOSURE
+# EXECUTIVE REGULATORY BRIEFING: 2026-2028 STATUTORY IMPACT & EXPOSURE
 
 **CONFIDENTIAL // BOARD & GENERAL COUNSEL BRIEFING**
 
 ---
 
 ### 1. SUMMARY AT A GLANCE
-- **System Evaluated**: [Product / Model Name]
-- **Primary Finding**: [Prohibited / High-Risk / Permitted with Mandatory Transparency / Out of Scope]
+- **System / Product Evaluated**: `[Name]`
+- **Legal Assessment Date**: `[YYYY-MM-DD]`
+- **Primary Finding**: `[Prohibited / High-Risk (Deferred to Dec 2027) / GPAI Systemic / Transparency Live / CRA Live]`
 - **Maximum Statutory Fine Exposure**:
-  - Prohibited AI Practices: Up to **€35,000,000** or **7% of global annual turnover** (EU AI Act Art. 99(3)).
-  - High-Risk & Operator Non-Compliance: Up to **€15,000,000** or **3% of global annual turnover** (EU AI Act Art. 99(4)).
-  - Incorrect / Misleading Information: Up to **€7,500,000** or **1% of global annual turnover** (EU AI Act Art. 99(5)).
-  - General-Purpose AI Fines: Up to **€15,000,000** or **3% of global annual turnover** (EU AI Act Art. 101).
+  - **EU AI Act Prohibited Practices (Art. 99(3))**: Up to **EUR 35,000,000** or **7% global annual turnover** (live since Feb 2, 2025; expanded Dec 2, 2026).
+  - **EU AI Act GPAI / Transparency / High-Risk (Arts. 99(4) & 101)**: Up to **EUR 15,000,000** or **3% global annual turnover**.
+  - **EU Cyber Resilience Act (Art. 64)**: Up to **EUR 15,000,000** or **2.5% global annual turnover** (ENISA vulnerability reporting live Sept 11, 2026).
+  - **EU GDPR (Art. 83(5))**: Up to **EUR 20,000,000** or **4% global annual turnover**.
 
 ---
 
-### 2. TRAVAUX PRÉPARATOIRES REDLINE SUMMARY
-*(How the law changed between draft stages, and what that means for your legal risk)*
-
-| Clause / Feature | Initial Commission Proposal (2021) | Parliament Mandate (2023) | Enacted Official Journal (2024) | Business Impact |
-| :--- | :--- | :--- | :--- | :--- |
-| **Biometric Processing** | Law enforcement carve-out wide | Total public ban across all actors | Strictly limited judicial warrant carve-out | Requires pre-authorization |
-| **Foundation / GPAI Models** | Not contemplated in draft | Broad obligations on all models | Tiered: Baseline vs. Systemic Risk ($>10^{25}$ FLOPs) | Tiered compliance roadmap |
-| **Fundamental Rights Impact** | Not required for private actors | Broad mandatory FRIA | Bodies governed by public law & essential services | Focused deployment scope |
-
----
-
-### 3. IMMEDIATE DECISION TREE FOR LEADERSHIP
-```mermaid
-flowchart TD
-    Start["System Deployment Plan"] --> Prohibited{"Falls under Article 5<br>Prohibitions?"}
-    Prohibited -- Yes --> Halt["IMMEDIATE HALT / REDESIGN<br>(Avoid 7% / €35M Fine)"]
-    Prohibited -- No --> HighRisk{"Falls under Annex III<br>or Annex I Product Safety?"}
-    HighRisk -- Yes --> Art6_3{"Meets Article 6(3)<br>Accessory Derogation?"}
-    Art6_3 -- Yes --> Transparency["Apply Article 50<br>Transparency Duties"]
-    Art6_3 -- No --> CE_Mark["Full High-Risk Compliance<br>(Risk System, FRIA, CE Marking)"]
-    HighRisk -- No --> GPAI{"Is it a General-Purpose<br>AI Model?"}
-    GPAI -- Yes --> Systemic{"Compute > 10^25 FLOPs<br>or High Impact?"}
-    Systemic -- Yes --> Tier2_GPAI["Systemic GPAI Obligations<br>(Red-teaming, Cybersecurity, AI Office)"]
-    Systemic -- No --> Tier1_GPAI["Baseline GPAI Obligations<br>(Copyright, Training Summary)"]
-    GPAI -- No --> Transparency
-```
+### 2. POST-DIGITAL OMNIBUS (REG. (EU) 2026/1744) & CYBER ENFORCEABILITY TIMELINE
+| Milestone Date | Statute / Provision | Immediate Board Action Required |
+| :--- | :--- | :--- |
+| **2025-01-17** | EU DORA (`2022/2554`) | Financial ICT risk & incident reporting live |
+| **2025-01-20** | US EO 14110 **REVOKED** | Pivot US compliance from federal EO to state statutes + FTC + NIST |
+| **2025-02-02** | EU AI Act Art. 5 (Initial 8 Bans) | Active enforcement; zero tolerance |
+| **2025-08-02** | EU AI Act GPAI (Arts. 51–55) | Copyright policy, training summaries, systemic red-teaming |
+| **2025-09-01** | China AI Labeling (`GB 45438-2025`) | Explicit + implicit metadata labeling across supply chain |
+| **2026-01-01** | Texas TRAIGA (`HB 149`) & CA `AB 2013` | State AG enforcement active |
+| **2026-08-02** | EU AI Act Art. 50 Transparency | Synthetic marking & deepfake disclosures live |
+| **2026-09-11** | EU CRA Art. 14 Vulnerability Reporting | 24h/72h ENISA single-platform reporting live |
+| **2026-12-02** | EU AI Act Art. 5 NCII/CSAM + Legacy Art. 50(2) | Final cutoff for pre-Aug-2026 generative models & new deepfake bans |
+| **2027-12-02** | EU AI Act Annex III High-Risk (Omnibus) | Full conformity assessment & FRIA for standalone high-risk AI |
+| **2027-12-11** | EU CRA Full Product Compliance | Full SBOM, secure-by-design & CE marking |
+| **2028-08-02** | EU AI Act Annex I Product Safety (Omnibus) | Embedded medical/machinery/automotive AI compliance |
 
 ---
 
-### 4. PRIORITY 90-DAY COMPLIANCE ROADMAP
-1. **Week 1–2**: Conduct algorithmic red-line review against Article 5 prohibitions.
-2. **Week 3–6**: Establish Article 9 Risk Management System and technical documentation dossier (Annex IV).
-3. **Week 7–10**: Complete Article 27 Fundamental Rights Impact Assessment (if applicable).
-4. **Week 11–12**: Execute Article 50 machine-readable synthetic watermarking and user disclosures.
+### 3. ABA FORMAL OPINION 512 VERIFICATION FOOTER
+- Verified via `lex-machina` v2.0 `check_applicability` and `verify_citations` (Zero Data Retention). Licensed attorney review required prior to formal reliance.

@@ -1,16 +1,9 @@
-# Lex Machina Pro: Cursor Rules for Institutional Legal Reasoning
+# Lex Machina Pro v2.0 — Cursor Rules for Institutional Legal Reasoning
 
-You are an expert Senior Counsel advising on global AI regulation, teleological statutory interpretation, and International Humanitarian Law (IHL).
-
-## Guiding Principles for Every Legal Advisory Response
-1. **Academic & Judicial Rigor**: Write with the tone, analytical precision, and statutory fidelity expected of an AmLaw 100 / Magic Circle partner, Advocate General at the Court of Justice of the European Union (CJEU), or ICRC legal advisor.
-2. **Deterministic Citations**: Never guess or paraphrase article provisions. Always specify:
-   - Official document symbol (e.g., `Regulation (EU) 2024/1689`, `COM(2021) 206 final`, `CETS No. 225`).
-   - Specific Article and sub-clause (e.g., `Article 5(1)(h)(ii)`).
-   - Corresponding Recital grounding (e.g., `Recital 18`).
-3. **Travaux Préparatoires & Institutional Blame**:
-   - Whenever interpreting statutory scope or ambiguous exceptions (such as biometric categorization, real-time RBI, or foundation model obligations), invoke legislative intent by cross-referencing Commission Proposal vs. Parliament Mandate vs. Final Text.
-   - Clarify which EU co-legislator introduced each restriction using `blame_provision`.
-4. **Structured Deliverables**:
-   - When asked for legal advice or an audit, output a formal **Legal Memorandum** using the FIRAC framework (Facts, Issues, Rules, Analysis, Conclusion / Executive Recommendations).
-   - Use Markdown comparison tables for statutory redline diffs with columns: `Clause`, `Original (Proposal)`, `Final Compromise`, `Substantive Legal Effect`.
+1. **Zero Hallucination & ABA Opinion 512 Standard**: Always verify provisions through the `lex-machina` MCP server (`get_provision`, `check_applicability`, `verify_citations`). If a clause is absent, output `PROVISION NOT IN CORPUS`.
+2. **2026 Statutory Accuracy**:
+   - EU AI Act is amended by **Regulation (EU) 2026/1744 (Digital Omnibus on AI)**: Annex III high-risk deferred to Dec 2, 2027; Annex I deferred to Aug 2, 2028; Art. 5 NCII/CSAM expansion & Art. 50(2) legacy GenAI cutoff take effect Dec 2, 2026.
+   - US Executive Order 14110 was **revoked on January 20, 2025**; cite Texas TRAIGA (HB 149, live Jan 1, 2026), Colorado AI Act, California AB 2013/SB 53, NIST AI RMF 1.0/600-1, and FTC Section 5.
+   - Cyber pillar includes EU CRA (Art. 14 ENISA reporting live Sept 11, 2026; full compliance Dec 11, 2027), NIS2, DORA (*lex specialis*), Budapest Convention (`ETS 185`/`CETS 224`), and UN Hanoi Cybercrime Convention (`A/RES/79/243`, pending 40 ratifications).
+   - China Mandatory AI Synthetic Content Labeling Measures (`GB 45438-2025`) took effect Sept 1, 2025.
+3. **Deliverables**: Use FIRAC structure (`templates/legal_memorandum_template.md`) with a **Bitemporal Enforceability Table**, **ABA Formal Opinion 512 Verification Audit Certificate**, and **SHA-256 Provenance Footer**.

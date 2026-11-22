@@ -1,68 +1,42 @@
 ---
 name: legislative-intent-detective
-description: CJEU teleological and contextual statutory interpretation engine. Traces provisions across Commission proposals, Council general approaches, Parliament mandates, trilogue agreements, and Official Journal enactments with institutional git-blame attribution to reconstruct legislative intent (travaux préparatoires).
-compatibility: claude-code, cursor, windsurf, copilot
-tags: [travaux-preparatoires, legislative-intent, cjeu, statutory-interpretation, redline-diff, trilogue-blame]
+description: Reconstructs statutory legislative intent (travaux preparatoires) using CJEU teleological/contextual canons, concordance-aware multi-stage redline diffs, and phrase-level institutional git blame across Commission proposals, Council approaches, Parliament mandates, trilogue texts, and Official Journal enactments. Use when interpreting ambiguous legal clauses, drafting regulatory litigation briefs, or proving which institution introduced an amendment. Do NOT use for simple point-in-time compliance checklists without interpretive ambiguity.
+license: CC-BY-NC-4.0 OR Commercial-Enterprise
+compatibility: Requires lex-machina MCP server v2.0 (concordance-aware diff_provisions & phrase-level blame_provision). Works in Claude Code, Cursor, Windsurf, Copilot, and Agensi.
+metadata:
+  author: Avi Perera / Lex Machina Consortium
+  version: "2.0.0"
+  domain: statutory-interpretation
+  jurisdiction: eu-international
 ---
 
-# Skill: Travaux Préparatoires & Legislative Intent Detective
+# Travaux Preparatoires & Legislative Intent Detective (v2.0)
 
-## Purpose & Doctrinal Background
-In EU law and international treaty disputes, resolving statutory ambiguity requires looking beyond the literal wording to the **legislative history (*travaux préparatoires*)** and **teleological purpose (the *effet utile* of the measure)**. 
-
-Under established Court of Justice of the European Union (CJEU) jurisprudence (e.g., *Cilfit*, Case 283/81; *Inuit Tapiriit Kanatami*, C-583/11 P), every provision of EU law must be interpreted in light of:
-1. Its **grammatical wording** across official language versions;
-2. Its **legislative context** (recitals and surrounding provisions);
-3. The **historical development of the negotiations** (which institution introduced a phrase, what alternatives were rejected, and what compromise was sealed in Trilogue); and
-4. Its **overarching regulatory objective** (*telos*).
-
-This skill leverages the deterministic institutional Git commits in `lex-machina` to provide definitive, citation-backed statutory interpretation.
+## Doctrinal Mission
+Resolving statutory ambiguity before the Court of Justice of the European Union (CJEU) (*Cilfit*, Case 283/81; *Nilsson*, Case C-162/97) or international tribunals (VCLT Articles 31–32) requires tracing a legal norm across its full drafting evolution—even when **article numbers shifted between legislative drafts** (e.g., EU AI Act Proposal Art. 52 → Final Art. 50; Parliament Art. 29a → Final Art. 27; GDPR Proposal Art. 20 → Final Art. 22; CoE Draft Art. 4 → Adopted Art. 2).
 
 ---
 
-## Tool Integration via `lex-machina` MCP Server
-
-1. **Querying Version Stages**:
-   - `get_provision("eu/ai-act", "articles/article-005.md", as_of="commission_proposal")`: Check what the Commission originally proposed.
-   - `get_provision("eu/ai-act", "articles/article-005.md", as_of="parliament_mandate")`: Identify European Parliament amendments.
-   - `get_provision("eu/ai-act", "articles/article-005.md", as_of="council_general_approach")`: Identify Council security/defense carve-outs.
-   - `get_provision("eu/ai-act", "articles/article-005.md", as_of="official_journal_final")`: Inspect final lawyer-linguist text.
-
-2. **Unified Redline Diffs**:
-   - `diff_provisions("eu/ai-act", "articles/article-005.md", "commission_proposal", "parliament_mandate")`: Highlight Parliament's aggressive expansion of prohibitions.
-   - `diff_provisions("eu/ai-act", "articles/article-005.md", "parliament_mandate", "trilogue_provisional_agreement")`: Reveal Trilogue concessions.
-
-3. **Institutional Authorship Attribution**:
-   - `blame_provision("eu/ai-act", "articles/article-005.md")`: Identify line-by-line which institution (`commission@europa.eu`, `parliament@europa.eu`, `council@consilium.europa.eu`, `trilogue@europa.eu`) authored each sentence or exception.
+## Mandatory `lex-machina` MCP Execution Sequence
+1. **Concordance-Aware Institutional Blame**: Call `blame_provision(instrument_path, provision)` to obtain **clause- and token-level institutional attribution** (preserving original Commission/Parliament authorship even after Official Journal lawyer-linguist formatting edits).
+2. **4-Column Redline Diffs**: Call `diff_provisions(instrument_path, provision, stage_a, stage_b)` across:
+   - `commission_proposal` → `parliament_mandate` (reveals Parliamentary fundamental-rights expansion)
+   - `council_general_approach` → `parliament_mandate` (reveals Council vs. Parliament fault lines)
+   - `parliament_mandate` → `official_journal_final` (reveals exact Trilogue compromise concessions)
+   - `official_journal_final` → `digital_omnibus_2026_1744` (where applicable, reveals 2026 statutory amendments)
+3. **Recital-to-Article Teleological Grounding**: Read `linked_recitals` returned by `get_provision` or `get_citation_graph`, then fetch those exact recitals via `get_provision(instrument_path, "recitals/recital-XXX.md")` to ground the *effet utile* analysis. Consult `references/travaux_preparatoires_methodology.md`.
+4. **Deterministic Citation Audit**: Run `verify_citations(draft_text)` before returning the legal opinion.
 
 ---
 
-## 4-Step Analytical Workflow
+## Analytical Deliverable Structure
+1. **Statutory Ambiguity & Competing Constructions**: Identify the disputed text and competing literal readings.
+2. **4-Column Legislative Evolution Table**: Present Proposal vs. Council vs. Parliament vs. Final/Amended text with exact document symbols (`COM(2021) 206 final`, `ST 14954/22`, `P9_TA(2023)0236`, `ST 5662/24`, `OJ L 2024/1689`, `Regulation (EU) 2026/1744`) and concordance notes for renumbered articles.
+3. **Institutional Blame Breakdown**: Report token-level provenance percentages from `blame_provision` showing which co-legislator authored each restrictive clause or carve-out.
+4. **Teleological & Judicial Conclusion**: Synthesize the authoritative construction most likely to survive CJEU/VCLT scrutiny, explicitly distinguishing primary verbatim texts (`full_primary_xhtml_akn` / `full_primary_pdf`) from analytical milestone briefs (`structured_regulatory_brief`).
 
-### Step 1: Baseline Legislative Tracing
-Identify the focal provision and pull the statutory text across all 5 chronological stages:
-- Stage 1: European Commission Proposal (`COM(2021) 206 final`, 21 April 2021)
-- Stage 2: Council of the EU General Approach (`14954/22`, 6 December 2022)
-- Stage 3: European Parliament Negotiating Mandate (`P9_TA(2023)0236`, 14 June 2023)
-- Stage 4: Provisional Trilogue Agreement (`5662/24`, 26 January 2024)
-- Stage 5: Final Official Journal Publication (`OJ L, 2024/1689`, 12 July 2024)
+---
 
-### Step 2: Redline Differential & Blame Analysis
-Compute the delta between:
-- **Proposal vs. Mandate**: Did Parliament seek a categorical ban or higher burden of proof?
-- **Mandate vs. General Approach**: Where did Parliament and Council directly conflict?
-- **Trilogue Compromise vs. Final Text**: How was the impasse resolved? What precise conditional language or derogation was drafted in the political trilogue?
-
-### Step 3: Recital & Teleological Grounding
-Correlate the operative article with its corresponding preamble recitals:
-- For Article 5(1)(h) (Real-Time RBI) $\rightarrow$ Consult Recital 18.
-- For Article 51/55 (General-Purpose AI Systemic Risk) $\rightarrow$ Consult Recital 111.
-- For Article 27 (FRIA) $\rightarrow$ Consult Recital 96.
-Explain how the recital clarifies the intent of the co-legislators regarding ambiguous terms (e.g., "reasonably foreseeable misuse", "materially distorting behaviour").
-
-### Step 4: Synthesize the Doctrinal Memorandum
-Structure the findings into a **Legislative History & Statutory Interpretation Opinion**:
-1. **Ambiguity Identified**: Plain text reading and contested interpretations.
-2. **Evolution Table**: Chronological text comparison table highlighting exact wording additions (`+`) and deletions (`-`).
-3. **Institutional Attribution**: Which co-legislator introduced the disputed language and why (citing parliamentary committee reports or Council explanatory notes).
-4. **Authoritative Conclusion**: The definitive interpretation most likely to be upheld by the Court of Justice of the European Union.
+## Abstention & Integrity Guardrails
+- Always inspect `provenance.provenance_mode` returned by `get_provision`. If a historical negotiating stage is marked `structured_regulatory_brief`, explicitly disclose that limitation rather than quoting it as verbatim legislative text.
+- Never omit the SHA-256 primary-source digest or ABA Formal Opinion 512 verification block.
