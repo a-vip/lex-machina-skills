@@ -25,13 +25,13 @@ from typing import Any
 
 # Exact authoritative maximum article numbers per enacted statute/treaty
 STATUTE_MAX_ARTICLES: list[tuple[str, str, int]] = [
-    (r"(?:EU\s+AI\s+Act|Regulation\s*\(EU\)\s*2024/1689)[^.\n]{0,50}?\bArticle\s+(\d+)", "EU AI Act (2024/1689)", 113),
-    (r"(?:GDPR|Regulation\s*\(EU\)\s*2016/679)[^.\n]{0,50}?\bArticle\s+(\d+)", "EU GDPR (2016/679)", 99),
-    (r"(?:Cyber\s+Resilience\s+Act|\bCRA\b|Regulation\s*\(EU\)\s*2024/2847)[^.\n]{0,50}?\bArticle\s+(\d+)", "EU CRA (2024/2847)", 71),
-    (r"(?:NIS\s*2|Directive\s*\(EU\)\s*2022/2555)[^.\n]{0,50}?\bArticle\s+(\d+)", "EU NIS2 (2022/2555)", 46),
-    (r"(?:\bDORA\b|Regulation\s*\(EU\)\s*2022/2554)[^.\n]{0,50}?\bArticle\s+(\d+)", "EU DORA (2022/2554)", 64),
-    (r"(?:CETS\s*(?:No\.?\s*)?225|CoE\s+AI\s+Convention)[^.\n]{0,50}?\bArticle\s+(\d+)", "CoE AI Convention (CETS 225)", 36),
-    (r"(?:Additional\s+Protocol\s+I|\bAP\s*I\b)[^.\n]{0,50}?\bArticle\s+(\d+)", "Additional Protocol I (1977)", 102),
+    (r"EU\s+AI\s+Act|Regulation\s*\(EU\)\s*2024/1689", "EU AI Act (2024/1689)", 113),
+    (r"\bGDPR\b|Regulation\s*\(EU\)\s*2016/679", "EU GDPR (2016/679)", 99),
+    (r"Cyber\s+Resilience\s+Act|\bCRA\b|Regulation\s*\(EU\)\s*2024/2847", "EU CRA (2024/2847)", 71),
+    (r"NIS\s*2|Directive\s*\(EU\)\s*2022/2555", "EU NIS2 (2022/2555)", 46),
+    (r"\bDORA\b|Regulation\s*\(EU\)\s*2022/2554", "EU DORA (2022/2554)", 64),
+    (r"CETS\s*(?:No\.?\s*)?225|CoE\s+AI\s+Convention", "CoE AI Convention (CETS 225)", 36),
+    (r"Additional\s+Protocol\s+I|\bAP\s*I\b", "Additional Protocol I (1977)", 102),
 ]
 
 
@@ -40,13 +40,22 @@ def audit_legal_text(text: str) -> dict[str, Any]:
     warnings: list[str] = []
     checked = 0
 
-    for pattern, label, max_art in STATUTE_MAX_ARTICLES:
-        for m in re.finditer(pattern, text, re.I):
+    for sent in re.split(r"(?<=[.!?\n])\s+", text):
+        anchors: list[tuple[int, str, int, str]] = []
+        for pat, label, max_art in STATUTE_MAX_ARTICLES:
+            for dm in re.finditer(pat, sent, re.I):
+                anchors.append((dm.start(), label, max_art, dm.group(0)))
+        if not anchors:
+            continue
+        anchors.sort(key=lambda x: x[0])
+        for am in re.finditer(r"\bArticles?\s+(\d+)\b", sent, re.I):
             checked += 1
-            num = int(m.group(1))
+            preceding = [a for a in anchors if a[0] <= am.start()]
+            _, label, max_art, anchor_txt = preceding[-1] if preceding else anchors[0]
+            num = int(am.group(1))
             if num < 1 or num > max_art:
                 errors.append(
-                    f"FABRICATED CITATION: '{m.group(0).strip()}' — {label} only contains Articles 1-{max_art}."
+                    f"FABRICATED CITATION: '{anchor_txt} {am.group(0)}' — {label} only contains Articles 1-{max_art}."
                 )
 
     # Bitemporal trap 1: Revoked EO 14110
