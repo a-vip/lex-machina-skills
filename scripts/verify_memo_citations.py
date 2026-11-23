@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-Deterministic Legal Citation & Bitemporal Guardrail Verifier (`scripts/verify_memo_citations.py`).
+Deterministic Legal Citation & Bitemporal Guardrail Verifier (`scripts/verify_memo_citations.py` — v3.0).
 
 Pure Python standard-library script (0 external dependencies, 0 local disk cache)
 runnable standalone or as a Claude Code `PostToolUse` hook to enforce ABA Formal
 Opinion 512 candor and prevent Stanford-RegLab-documented misgrounding/fabrications:
-1. Flags out-of-range fabricated article citations (EU AI Act > 113, GDPR > 99,
-   EU CRA > 71, NIS2 > 46, DORA > 64, CETS 225 > 36, AP I > 102).
-2. Flags stale citations to revoked US Executive Order 14110 (revoked 2025-01-20)
-   if revocation is not disclosed.
-3. Flags outdated pre-Digital-Omnibus claims asserting EU AI Act Annex III high-risk
-   rules entered application on August 2, 2026 without noting the Regulation (EU)
-   2026/1744 postponement to December 2, 2027.
+1. Flags out-of-range fabricated article citations across 10 treaties/statutes
+   (EU AI Act > 113, GDPR > 99, EU CRA > 71, NIS2 > 46, DORA > 64, CETS 225 > 36,
+   Budapest ETS 185 > 48, UN Hanoi A/RES/79/243 > 68, AP I > 102, AP II > 28).
+2. Flags stale citations to revoked US Executive Order 14110 (revoked 2025-01-20).
+3. Flags outdated pre-Digital-Omnibus claims asserting EU AI Act Annex III entered
+   application on August 2, 2026 without noting Reg. (EU) 2026/1744 deferral to Dec 2, 2027.
+4. Flags treating Brazil AI Bill PL 2338/2023 as already enacted law (still pending Chamber vote).
 """
 
 from __future__ import annotations
@@ -31,7 +31,10 @@ STATUTE_MAX_ARTICLES: list[tuple[str, str, int]] = [
     (r"NIS\s*2|Directive\s*\(EU\)\s*2022/2555", "EU NIS2 (2022/2555)", 46),
     (r"\bDORA\b|Regulation\s*\(EU\)\s*2022/2554", "EU DORA (2022/2554)", 64),
     (r"CETS\s*(?:No\.?\s*)?225|CoE\s+AI\s+Convention", "CoE AI Convention (CETS 225)", 36),
-    (r"Additional\s+Protocol\s+I|\bAP\s*I\b", "Additional Protocol I (1977)", 102),
+    (r"Budapest\s+Convention|ETS\s*(?:No\.?\s*)?185", "Budapest Convention (ETS 185)", 48),
+    (r"UN\s+Cybercrime\s+Convention|Hanoi\s+Convention|A/RES/79/243", "UN Hanoi Cybercrime Convention", 68),
+    (r"Additional\s+Protocol\s+II|\bAP\s*II\b", "Additional Protocol II (1977)", 28),
+    (r"Additional\s+Protocol\s+I\b|\bAP\s*I\b", "Additional Protocol I (1977)", 102),
 ]
 
 
@@ -74,7 +77,17 @@ def audit_legal_text(text: str) -> dict[str, Any]:
                 "BITEMPORAL DEADLINE WARNING: Annex III high-risk enforcement was postponed from 2026-08-02 to 2027-12-02 by Regulation (EU) 2026/1744 (Digital Omnibus on AI)."
             )
 
-    # Bitemporal trap 3: Fabricated '72 hours' EU AI Act Art. 73 serious incident deadline
+    # Bitemporal trap 3: Brazil PL 2338/2023 cited as already enacted
+    if re.search(r"PL\s*2338(?:/2023)?", text, re.I):
+        checked += 1
+        if re.search(r"\b(?:enacted|in\s+force|currently\s+enforceable)\b", text, re.I) and not re.search(
+            r"pending|bill|not\s+yet\s+enacted|chamber\s+of\s+deputies|review", text, re.I
+        ):
+            errors.append(
+                "BITEMPORAL STATUS ERROR: Brazil PL 2338/2023 passed the Senate (Dec 2024) but remains PENDING in the Chamber of Deputies — it is NOT YET ENACTED."
+            )
+
+    # Bitemporal trap 4: Fabricated '72 hours' EU AI Act Art. 73 serious incident deadline
     if re.search(r"(?:AI\s+Act|Article\s+73)[^.\n]{0,80}\b72\s*hours?\b", text, re.I):
         warnings.append(
             "STATUTORY PRECISION WARNING: Verify exact EU AI Act Article 73 serious incident timelines (2-day / 10-day / 15-day statutory windows, not GDPR's 72-hour clock)."

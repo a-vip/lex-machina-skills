@@ -1,8 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/hesreallyhim/claude-code-json-schema/main/schemas/plugin.schema.json",
   "name": "lex-machina",
-  "version": "2.0.0",
-  "description": "Institutional-grade AI, Cyber & International Law reasoning suite (5 skills + ABA Opinion 512 citation-verification PostToolUse hook + Remote Streamable HTTP & stdio MCP config).",
+  "version": "3.0.0",
+  "description": "Institutional-grade planetary AI, Cyber, IHL & Case Law reasoning suite (6 skills + ABA Opinion 512 citation-verification PostToolUse hook + Remote Streamable HTTP & stdio MCP config).",
   "author": {
     "name": "Avi Perera / Lex Machina Consortium",
     "email": "avi@lex-machina.org"

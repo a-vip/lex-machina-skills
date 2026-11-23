@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "lex-machina",
-      "description": "5 institutional legal skills (EU AI Act post-Digital Omnibus 2026/1744, Travaux Preparatoires, IHL Art. 36 Weapons Review, Transatlantic Crosswalk, Cyber Treaty & CRA/NIS2/DORA Auditor) paired with deterministic ABA Opinion 512 citation-verification hooks and remote MCP.",
+      "description": "6 institutional legal skills (EU AI Act post-Digital Omnibus 2026/1744, Travaux Preparatoires, IHL Art. 36 Weapons Review, Planetary 9-Jurisdiction Crosswalk, Cyber Treaty & CRA/NIS2/DORA Auditor, and CJEU/ICJ Judicial Precedent Counsel) paired with deterministic ABA Opinion 512 citation-verification hooks and remote MCP.",
       "author": {
         "name": "Avi Perera / Lex Machina Consortium"
       },

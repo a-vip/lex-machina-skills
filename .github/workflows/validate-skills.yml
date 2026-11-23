@@ -49,9 +49,9 @@ jobs:
               json.loads(p.read_text(encoding="utf-8"))
               print(f"OK JSON: {jf}")
 
-          # 2. Validate all 5 skills against agentskills.io frontmatter spec
+          # 2. Validate all 6 skills against agentskills.io frontmatter spec
           manifest = json.loads(Path("marketplace.json").read_text(encoding="utf-8"))
-          assert len(manifest["skills"]) == 5, f"Expected 5 skills, got {len(manifest['skills'])}"
+          assert len(manifest["skills"]) == 6, f"Expected 6 skills, got {len(manifest['skills'])}"
           for s in manifest["skills"]:
               ep = Path(s["entrypoint"])
               assert ep.exists(), f"Missing skill entrypoint: {ep}"
@@ -67,16 +67,16 @@ jobs:
           # 3. Smoke-test deterministic ABA Opinion 512 citation verifier script
           good = subprocess.run(
               [sys.executable, "scripts/verify_memo_citations.py"],
-              input="Under EU AI Act Article 5 and CRA Article 14, obligations apply. EO 14110 was revoked on 2025-01-20.",
+              input="Under EU AI Act Article 5, CRA Article 14, and Additional Protocol II Article 13, obligations apply. EO 14110 was revoked on 2025-01-20. Brazil PL 2338/2023 remains pending Chamber review.",
               text=True, capture_output=True,
           )
           assert good.returncode == 0, f"Valid memo failed verifier: {good.stdout} {good.stderr}"
 
           bad = subprocess.run(
               [sys.executable, "scripts/verify_memo_citations.py"],
-              input="Under EU AI Act Article 199 and active Executive Order 14110, fines apply.",
+              input="Under EU AI Act Article 199, Additional Protocol II Article 99, and active Executive Order 14110, Brazil PL 2338/2023 is currently enacted and in force.",
               text=True, capture_output=True,
           )
           assert bad.returncode == 1, f"Fabricated memo should fail verifier! stdout={bad.stdout}"
-          print("OK Deterministic verifier passed positive & adversarial checks!")
+          print("OK Deterministic verifier passed positive & adversarial v3.0 checks!")
           EOF
