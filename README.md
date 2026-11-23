@@ -59,7 +59,9 @@ Drop `.cursorrules` and `.cursor/rules/legal-analysis.mdc` into your workspace a
 
 ---
 
-## Deliverable Templates & Licensing
+## Deliverable Templates, Launch Kit & Licensing
+- [**Live Interactive Legal Corpus Explorer (Zero Data Retention)**](https://a-vip.github.io/lex-machina/)
+- [**Agensi, MCP Registry, Glama, Smithery & Enterprise ZDR Launch Kit**](AGENSI_LAUNCH_KIT.md)
 - [**Formal Legal Opinion & Bitemporal Compliance Memorandum (FIRAC + ABA 512 Certificate)**](templates/legal_memorandum_template.md)
 - [**Executive Board Briefing (2026–2028 Enforceability Timeline)**](templates/executive_briefing_template.md)
 - **Dual License ([`LICENSE`](LICENSE))**: Free under **CC BY-NC 4.0** for academic researchers, universities, and NGOs; **Commercial Enterprise License** required for law firm client advisory and commercial deployments (`licensing@lex-machina.org`).
