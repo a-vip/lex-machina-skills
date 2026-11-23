@@ -52,7 +52,7 @@ Empirical evaluations by **Stanford RegLab** (*Journal of Empirical Legal Studie
 Installs all 6 skills, the `lex-machina` MCP server (`.mcp.json`), and the automatic ABA Formal Opinion 512 `PostToolUse` citation verifier hook (`hooks/hooks.json`).
 
 ### 2. Agensi (`agensi.io`) & Cursor / Windsurf / Copilot
-Every skill under `skills/*/SKILL.md` strictly conforms to **`agentskills.io`**, with explicit positive and negative (`Do NOT use`) triggers and deterministic verification scripts.
+Every skill under `skills/*/SKILL.md` strictly conforms to **`agentskills.io`**, with explicit positive and negative (`Do NOT use`) triggers and deterministic verification scripts. Point any Streamable HTTP MCP client directly to **`https://lex-machina.aviperera0.workers.dev/mcp`** (zero local Python/Node installation required!).
 
 ---
 
